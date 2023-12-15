@@ -1,9 +1,9 @@
 // code 409
-class NotFoundError extends Error {
+class ConflictError extends Error {
   constructor(message) {
     super(message);
     this.statusCode = 409;
   }
 }
 
-module.exports = NotFoundError;
+module.exports = ConflictError;
