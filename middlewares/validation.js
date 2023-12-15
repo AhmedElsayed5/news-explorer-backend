@@ -66,19 +66,21 @@ module.exports.validateArticledBody = celebrate({
       "string.empty": 'The "name" field must be filled in',
     }),
 
-    content: Joi.string().required().min(2).max(500).messages({
+    text: Joi.string().required().min(2).max(500).messages({
       "string.min": 'The minimum length of the "name" field is 2',
       "string.max": 'The maximum length of the "name" field is 30',
       "string.empty": 'The "name" field must be filled in',
     }),
 
-    title: Joi.string().required().min(2).max(30).messages({
+    title: Joi.string().required().min(2).max(100).messages({
       "string.min": 'The minimum length of the "name" field is 2',
       "string.max": 'The maximum length of the "name" field is 30',
       "string.empty": 'The "name" field must be filled in',
     }),
 
-    publishedAt: Joi.date(),
+    date: Joi.string().required().min(2).max(30).messages({
+      "string.empty": 'The "date" field must be filled in',
+    }),
 
     source: Joi.string().required().min(2).max(30).messages({
       "string.min": 'The minimum length of the "name" field is 2',
@@ -86,12 +88,12 @@ module.exports.validateArticledBody = celebrate({
       "string.empty": 'The "name" field must be filled in',
     }),
 
-    url: Joi.string().required().custom(validateURL).messages({
+    link: Joi.string().required().custom(validateURL).messages({
       "string.empty": 'The "imageUrl" field must be filled in',
       "string.uri": 'the "imageUrl" field must be a valid url',
     }),
 
-    urlToImage: Joi.string().required().custom(validateURL).messages({
+    image: Joi.string().required().custom(validateURL).messages({
       "string.empty": 'The "imageUrl" field must be filled in',
       "string.uri": 'the "imageUrl" field must be a valid url',
     }),

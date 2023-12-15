@@ -8,10 +8,12 @@ const { requestLogger, errorLogger } = require("./middlewares/logger");
 
 const { PORT = 3000 } = process.env;
 const app = express();
+const DATABASE_CONNECTION =
+  process.env.DATABASE_CONNECTION || "mongodb://127.0.0.1:27017/news-app";
 // app.use(cors());
 const connectToMongo = async () => {
   try {
-    mongoose.connect("mongodb://127.0.0.1:27017/news-app");
+    mongoose.connect(DATABASE_CONNECTION);
     // console.log("connected to DB");
   } catch (error) {
     // console.log(error);

@@ -12,15 +12,7 @@ const getArticles = (req, res, next) => {
 };
 
 const saveArticle = (req, res, next) => {
-  const {
-    keyword,
-    content: text,
-    title,
-    publishedAt: date,
-    source,
-    url: link,
-    urlToImage: image,
-  } = req.body;
+  const { keyword, text, title, date, source, link, image } = req.body;
   Article.create({
     keyword,
     title,
