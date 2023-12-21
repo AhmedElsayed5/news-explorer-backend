@@ -1,22 +1,23 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const helmet = require("helmet");
 const { errors } = require("celebrate");
 const errorHandler = require("./middlewares/error-handler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
+app.use(cors());
 const DATABASE_CONNECTION =
   process.env.DATABASE_CONNECTION || "mongodb://127.0.0.1:27017/news-app";
-// app.use(cors());
+
 const connectToMongo = async () => {
   try {
     mongoose.connect(DATABASE_CONNECTION);
-    // console.log("connected to DB");
   } catch (error) {
-    // console.log(error);
+    // console.error(error);
   }
 };
 connectToMongo();

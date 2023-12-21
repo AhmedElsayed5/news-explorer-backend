@@ -13,6 +13,6 @@ const {
 const auth = require("../middlewares/auth");
 
 router.get("/", auth, getArticles);
-router.post("/", auth, validateArticledBody, saveArticle);
+router.post("/", auth, saveArticle);
 router.delete("/:articleId", auth, validateArticleId, deleteArticle);
 module.exports = router;

@@ -8,11 +8,21 @@ const BadRequestError = require("../errors/BadRequestError");
 const { JWT_SECRET } = require("../utils/config");
 
 const getCurrentUser = (req, res, next) => {
+  // console.log(req.user);
   User.findById(req.user._id)
     .orFail(() => {
       throw new NotFoundError("No user with matching ID found");
     })
-    .then((user) => res.send(user))
+    .then((user) =>
+      res.send({
+        user: {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+        },
+        token: jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: "7d" }),
+      }),
+    )
     .catch((err) => {
       next(err);
     });
@@ -37,6 +47,7 @@ const signin = (req, res, next) => {
 };
 
 const signup = (req, res, next) => {
+  // console.log(req.body);
   const { name, email, password } = req.body;
   User.findOne({ email })
     .then((data) => {
