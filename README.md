@@ -23,7 +23,7 @@ www.newsapp.crabdance.com
 ## Install
 - For required packages check package.json
 - run "npm install"
-- commit frontend at [https://github.com/AhmedElsayed5/news-explorer-frontend/tree/master]
+- clone frontend at [https://github.com/AhmedElsayed5/news-explorer-frontend/tree/master]
 - run "npm install" on backend branch
 - read scripts in package.json "npm run dev" to run in local machine
 
